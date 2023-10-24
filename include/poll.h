@@ -31,6 +31,7 @@ bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
                     SDL_RenderClear(ren);
                     SDL_RenderCopy(ren, tex, NULL, NULL);
                     SDL_RenderPresent(ren);
+                    return true;
                 }else{
                     //create pierrot using texture/renderer within pierrot.
                 };
