@@ -19,7 +19,7 @@ class Window{
         SDL_Window* wind=NULL;
         SDL_Renderer* ren=NULL;
         SDL_Texture* tex=NULL;
-        int event=0;
+        int act[2]={0,0};
 };
 
 bool Window::init(){
@@ -29,17 +29,24 @@ bool Window::init(){
 };
 
 bool Window::update(SDL_Event& arg){
-    if(ballot.argfxn()!=2){
-        ballot.menu(arg, tex, ren);
-    }else{
-//        swan.update(arg);
-        printf("mhm");
+    switch (act[0]){
+        case 0:
+            if(ballot.menu(arg, tex, ren)==true){
+                    act[0]=1;
+                    printf("das zweite\n");
+                    swan.init(wind);
+            };
+            break;
+        case 1:
+            swan.update(arg);
+            printf("mhm\n");
+            break;
     };
     SDL_UpdateWindowSurface(wind);
 };
 
 bool Window::close(){
-    desw(wind); dest(tex);
+    swan.close(); desw(wind); dest(tex);
     SDL_DestroyRenderer(ren); ren=NULL;
 };
 
