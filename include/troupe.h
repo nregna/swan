@@ -4,7 +4,7 @@
 #include<iostream>
 
 #include"rendr.h"
-#include"automata.h"
+#include"mekanikk.h"
 #include"poll.h"
 
 class pierrot{
