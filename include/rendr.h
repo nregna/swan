@@ -11,7 +11,7 @@ void desw(SDL_Window*&);
 class Draw{
     public:
         bool texture(SDL_Texture*&, SDL_Renderer*, const char*);
-        bool sprite(int*, int*, SDL_Texture*&, SDL_Renderer*, SDL_Rect*, double, SDL_Point*, SDL_RendererFlip);
+        bool sprite(int, int, SDL_Texture*&, SDL_Renderer*, SDL_Rect*, double, SDL_Point*, SDL_RendererFlip);
 };
 
 bool Draw::texture(SDL_Texture*& tex, SDL_Renderer* ren, const char* prm="44.png"){
@@ -24,11 +24,11 @@ bool Draw::texture(SDL_Texture*& tex, SDL_Renderer* ren, const char* prm="44.png
     };
 };
 
-bool Draw::sprite(int* xpos, int* ypos, SDL_Texture*& ten, SDL_Renderer* rei, SDL_Rect* arg=NULL, double angle=0.0, SDL_Point* center=NULL, SDL_RendererFlip flip=SDL_FLIP_NONE){
-    SDL_Rect renderQuad = {*xpos, *ypos, 0, 0};
+bool Draw::sprite(int xpos, int ypos, SDL_Texture*& ten, SDL_Renderer* rei, SDL_Rect* arg=NULL, double angle=0.0, SDL_Point* center=NULL, SDL_RendererFlip flip=SDL_FLIP_NONE){
+    SDL_Rect renderQuad = {xpos, ypos, 99, 78};
     if(arg!=NULL){
         renderQuad.w=arg->w;
-        renderQuad.w=arg->h;
+        renderQuad.h=arg->h;
     };
     SDL_RenderCopyEx(rei, ten, arg, &renderQuad, angle, center, flip);
 };
