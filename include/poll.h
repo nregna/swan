@@ -10,10 +10,7 @@
 class Ballot{
     public:
         bool menu(SDL_Event&, SDL_Texture*&, SDL_Renderer*&);
-        bool handle(SDL_Event&, int, int, int, int, int);
-        int argfxn();
-    private:
-        int var=0;
+        bool handle(SDL_Event&, int*, int*, int);
 };
 
 bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
@@ -26,22 +23,16 @@ bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
 				arg.type=SDL_QUIT;
 				break;
 			case SDLK_SPACE:
-                if(var!=1||2){
-                    draw.texture(tex, ren, "44.png");
-                    SDL_RenderClear(ren);
-                    SDL_RenderCopy(ren, tex, NULL, NULL);
-                    SDL_RenderPresent(ren);
-                    return true;
-                }else{
-                    //create pierrot using texture/renderer within pierrot.
-                };
-                var++;
-				break;
+                draw.texture(tex, ren, "44.png");
+                SDL_RenderClear(ren);
+                SDL_RenderCopy(ren, tex, NULL, NULL);
+                SDL_RenderPresent(ren);
+                return true; break;
         };
-	};
+	}; return false;
 };
 
-bool Ballot::handle(SDL_Event& arg, int xpos, int ypos, int xvel, int yvel, int haste){
+bool Ballot::handle(SDL_Event& arg, int* xvel, int* yvel, int haste){
     if(arg.type==SDL_KEYDOWN){
         switch(arg.key.keysym.sym){
             case SDLK_BACKSPACE:
@@ -51,23 +42,20 @@ bool Ballot::handle(SDL_Event& arg, int xpos, int ypos, int xvel, int yvel, int 
 				arg.type=SDL_QUIT;
 				break;
             case SDLK_UP:
-                yvel+=haste;
+                *yvel+=haste;
                 break;
             case SDLK_DOWN:
-                yvel-=haste;
+                *yvel-=haste;
                 break;
             case SDLK_LEFT:
-                xvel+=haste;
+                *xvel+=haste;
                 break;
             case SDLK_RIGHT:
-                xvel-=haste;
+                *xvel-=haste;
                 break;
         };
     };
-};
-
-int Ballot::argfxn(){
-    return var;
+    printf("vel: (%d) - (%d)\n", *xvel, *yvel);
 };
 
 #endif // POLL_H_INCLUDED
