@@ -3,17 +3,17 @@
 
 #include<iostream>
 
-bool chuyen(int vel, int* pos, int s){
+bool chuyen(int* vel, int* pos, int s){
     if(*pos==0||*pos==s){
-        vel=-2*vel;
-    }else if(*pos+vel>s){
-        vel=s-*pos;
-    }else if(*pos-vel<0){
-        vel=0-*pos;
+        (*vel)=-2*(*vel);
+    }else if(*pos+(*vel)>s){
+        (*vel)=s-*pos;
+    }else if(*pos-(*vel)<0){
+        (*vel)=0-*pos;
     }else{
         return false;
     };
-    *pos+=vel;
+    *pos+=(*vel);
 	return true;
 };
 
