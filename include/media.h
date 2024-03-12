@@ -11,15 +11,12 @@
 
 class Window{
     public:
-        Draw draw; Ballot ballot; pierrot swan;
-        bool init();
-        bool update(SDL_Event&);
-        bool close();
+        Draw draw; Ballot ballot; Pierrot pierrot;
+        bool init(), update(SDL_Event&), close();
     private:
         SDL_Window* wind=NULL;
         SDL_Renderer* ren=NULL;
         SDL_Texture* tex=NULL;
-        int act[2]={0,0};
 };
 
 bool Window::init(){
@@ -29,24 +26,17 @@ bool Window::init(){
 };
 
 bool Window::update(SDL_Event& arg){
-    switch (act[0]){
-        case 0:
-            if(ballot.menu(arg, tex, ren)==true){
-                    act[0]=1;
-                    printf("das zweite\n");
-                    swan.init(wind);
-            };
-            break;
-        case 1:
-            swan.update(arg);
-            printf("mhm\n");
-            break;
+    if(pierrot.texture()!=false){
+        pierrot.update(arg, ren);
+    }else if(ballot.menu(arg, tex, ren)==true){
+        pierrot.init(ren);
+        printf("das zweite\n");
     };
     SDL_UpdateWindowSurface(wind);
 };
 
 bool Window::close(){
-    swan.close(); desw(wind); dest(tex);
+    pierrot.close(); desw(wind); dest(tex);
     SDL_DestroyRenderer(ren); ren=NULL;
 };
 
