@@ -23,36 +23,36 @@ bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
 				arg.type=SDL_QUIT;
 				break;
 			case SDLK_SPACE:
-                draw.texture(tex, ren, "44.png");
-                SDL_RenderClear(ren);
-                SDL_RenderCopy(ren, tex, NULL, NULL);
-                SDL_RenderPresent(ren);
-                return true; break;
-        };
+				draw.texture(tex, ren, "44.png");
+				SDL_RenderClear(ren);
+				SDL_RenderCopy(ren, tex, NULL, NULL);
+				SDL_RenderPresent(ren);
+				return true; break;
+        	};
 	}; return false;
 };
 
 bool Ballot::handle(SDL_Event& arg, int* xvel, int* yvel, int haste){
     if(arg.type==SDL_KEYDOWN){
         switch(arg.key.keysym.sym){
-            case SDLK_BACKSPACE:
-				arg.type=SDL_QUIT;
-				break;
-			case SDLK_ESCAPE:
-				arg.type=SDL_QUIT;
-				break;
-            case SDLK_UP:
-                *yvel+=haste;
-                break;
-            case SDLK_DOWN:
-                *yvel-=haste;
-                break;
-            case SDLK_LEFT:
-                *xvel+=haste;
-                break;
-            case SDLK_RIGHT:
-                *xvel-=haste;
-                break;
+		case SDLK_BACKSPACE:
+			arg.type=SDL_QUIT;
+			break;
+		case SDLK_ESCAPE:
+			arg.type=SDL_QUIT;
+			break;
+		case SDLK_UP:
+			*yvel+=haste;
+			break;
+		case SDLK_DOWN:
+			*yvel-=haste;
+			break;
+		case SDLK_LEFT:
+			*xvel+=haste;
+			break;
+		case SDLK_RIGHT:
+			*xvel-=haste;
+			break;
         };
     };
     printf("vel: (%d) - (%d)\n", *xvel, *yvel);
