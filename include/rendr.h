@@ -8,9 +8,6 @@
 void dest(SDL_Texture*&);
 void desw(SDL_Window*&);
 
-void dest(SDL_Texture*&);
-void desw(SDL_Window*&);
-
 class Draw{
 	public:
 		bool texture(SDL_Texture*&, SDL_Renderer*, const char*);
