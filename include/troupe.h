@@ -21,8 +21,8 @@ class Pierrot{
 
 bool Pierrot::update(SDL_Event& arg, SDL_Renderer*& rei){
 	ballot.handle(arg, &xvel, &yvel, haste);
-	chuyen(&xvel, &xpos, 391);
-	chuyen(&yvel, &ypos, 293);
+	chuyen(&xvel, &xpos, 391-99);
+	chuyen(&yvel, &ypos, 293-78);
 	draw.sprite(xpos, ypos, ten, rei);
 	printf("pos: %d - %d\n\n",xpos,ypos);
 };
