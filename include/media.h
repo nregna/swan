@@ -27,12 +27,14 @@ bool Window::init(){
 
 bool Window::update(SDL_Event& arg){
 	if(pierrot.texture()!=false){
+		draw.texture(tex, ren, "44.png");
+		SDL_RenderClear(ren);
+		SDL_RenderCopy(ren, tex, NULL, NULL);
 		pierrot.update(arg, ren);
 	}else if(ballot.menu(arg, tex, ren)==true){
 		pierrot.init(ren);
 		printf("das zweite\n");
 	};
-//    SDL_UpdateWindowSurface(wind);
 	SDL_RenderPresent(ren);
 };
 
