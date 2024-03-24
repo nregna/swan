@@ -42,16 +42,16 @@ bool Ballot::handle(SDL_Event& arg, int* xvel, int* yvel, int haste){
 			arg.type=SDL_QUIT;
 			break;
 		case SDLK_UP:
-			*yvel+=haste;
-			break;
-		case SDLK_DOWN:
 			*yvel-=haste;
 			break;
+		case SDLK_DOWN:
+			*yvel+=haste;
+			break;
 		case SDLK_LEFT:
-			*xvel+=haste;
+			*xvel-=haste;
 			break;
 		case SDLK_RIGHT:
-			*xvel-=haste;
+			*xvel+=haste;
 			break;
         };
     };
