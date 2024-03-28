@@ -8,9 +8,9 @@
 #include"rendr.h"
 
 class Ballot{
-    public:
-        bool menu(SDL_Event&, SDL_Texture*&, SDL_Renderer*&);
-        bool handle(SDL_Event&, int*, int*, int);
+	public:
+		bool menu(SDL_Event&, SDL_Texture*&, SDL_Renderer*&);
+		bool handle(SDL_Event&, int*, int*, int);
 };
 
 bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
@@ -33,29 +33,29 @@ bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
 };
 
 bool Ballot::handle(SDL_Event& arg, int* xvel, int* yvel, int haste){
-    if(arg.type==SDL_KEYDOWN){
-        switch(arg.key.keysym.sym){
-		case SDLK_BACKSPACE:
-			arg.type=SDL_QUIT;
-			break;
-		case SDLK_ESCAPE:
-			arg.type=SDL_QUIT;
-			break;
-		case SDLK_UP:
-			*yvel-=haste;
-			break;
-		case SDLK_DOWN:
-			*yvel+=haste;
-			break;
-		case SDLK_LEFT:
-			*xvel-=haste;
-			break;
-		case SDLK_RIGHT:
-			*xvel+=haste;
-			break;
-        };
-    };
-    printf("vel: (%d) - (%d)\n", *xvel, *yvel);
+	if(arg.type==SDL_KEYDOWN){
+		switch(arg.key.keysym.sym){
+			case SDLK_BACKSPACE:
+				arg.type=SDL_QUIT;
+				break;
+			case SDLK_ESCAPE:
+				arg.type=SDL_QUIT;
+				break;
+			case SDLK_UP:
+				*yvel-=haste;
+				break;
+			case SDLK_DOWN:
+				*yvel+=haste;
+				break;
+			case SDLK_LEFT:
+				*xvel-=haste;
+				break;
+			case SDLK_RIGHT:
+				*xvel+=haste;
+				break;
+		};
+	};
+	printf("vel: (%d) - (%d)\n", *xvel, *yvel);
 };
 
 #endif // POLL_H_INCLUDED
