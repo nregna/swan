@@ -3,11 +3,13 @@
 
 #include<iostream>
 
-bool chuyen(int* vel, int* pos, int s){
-	if(*pos<0||*pos>s){
-		*vel=-(*vel);
-	}; 
-	*pos+=(*vel); 
+bool shift(int* vel, int* pos, int s){
+	if(*pos<0){
+		*vel=-(*vel); *pos=0;
+	}else if(*pos>s){
+		*vel=-(*vel); *pos=s;
+	};
+	*pos+=(*vel);
 	return true;
 };
 
