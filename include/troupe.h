@@ -12,24 +12,24 @@ class Pierrot{
 		Draw draw; Ballot ballot;
 		bool update(SDL_Event&, SDL_Renderer*&), init(SDL_Renderer*&), close(), texture();
 	private:
-		int const haste = 1;
-		int xpos=0, ypos=0, xvel=0, yvel=0;
+		int const HASTE = 1;
+		int iXPos=0, iYPos=0, iXVel=0, iYVel=0;
 	protected:
 		SDL_Texture* ten=NULL;
 	//        SDL_Renderer* rei=NULL;
 };
 
 bool Pierrot::update(SDL_Event& arg, SDL_Renderer*& rei){
-	ballot.handle(arg, &xvel, &yvel, haste);
-	chuyen(&xvel, &xpos, 391-99);
-	chuyen(&yvel, &ypos, 293-78);
-	draw.sprite(xpos, ypos, ten, rei);
-	printf("pos: %d - %d\n\n",xpos,ypos);
+	ballot.handle(arg, &iXVel, &iYVel, HASTE);
+	shift(&iXVel, &iXPos, 391-99);
+	shift(&iYVel, &iYPos, 293-78);
+	draw.sprite(iXPos, iYPos, ten, rei);
+	printf("pos: %d - %d\n\n",iXPos,iYPos);
 };
 
 bool Pierrot::init(SDL_Renderer*& rei){
 	draw.texture(ten, rei, "swan.png");
-	draw.sprite(xpos, ypos, ten, rei);
+	draw.sprite(iXPos, iYPos, ten, rei);
 };
 
 bool Pierrot::close(){
