@@ -10,7 +10,7 @@
 class Ballot{
 	public:
 		bool menu(SDL_Event&, SDL_Texture*&, SDL_Renderer*&);
-		bool handle(SDL_Event&, int*, int*, int);
+		void handle(SDL_Event&, int*, int*, int);
 };
 
 bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
@@ -32,13 +32,10 @@ bool Ballot::menu(SDL_Event& arg, SDL_Texture*& tex, SDL_Renderer*& ren){
 	}; return false;
 };
 
-bool Ballot::handle(SDL_Event& arg, int* xvel, int* yvel, int haste){
+void Ballot::handle(SDL_Event& arg, int* xvel, int* yvel, int haste){
 	if(arg.type==SDL_KEYDOWN){
 		switch(arg.key.keysym.sym){
-			case SDLK_BACKSPACE:
-				arg.type=SDL_QUIT;
-				break;
-			case SDLK_ESCAPE:
+			case SDLK_BACKSPACE||SDLK_ESCAPE:
 				arg.type=SDL_QUIT;
 				break;
 			case SDLK_UP:
@@ -55,7 +52,6 @@ bool Ballot::handle(SDL_Event& arg, int* xvel, int* yvel, int haste){
 				break;
 		};
 	};
-	printf("vel: (%d) - (%d)\n", *xvel, *yvel);
 };
 
 #endif // POLL_H_INCLUDED
